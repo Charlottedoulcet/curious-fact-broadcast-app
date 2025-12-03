@@ -1,4 +1,5 @@
-import { displayFact, showLoadingState, showErrorState } from "./ui.js";
+import { displayFact, showLoadingState, showErrorState, renderFavorites } from "./ui.js";
+import { addToFavorites, getFavorites } from "./storage.js";
 let initFailed = false;
 
 export const fetchRandomFact = async () => {
@@ -62,5 +63,15 @@ btnTune.addEventListener("click", async () => {
     console.error("Error while loading random fact", error);
     showErrorState();
     btnTune.disabled = false;
+  }
+});
+
+const btnSave = document.getElementById("btn-save");
+btnSave.addEventListener("click", () => {
+  const currentFact = document.getElementById("fact-text").textContent;
+  const added = addToFavorites(currentFact);
+  if (added) {
+    const favorites = getFavorites();
+    renderFavorites(favorites);
   }
 });

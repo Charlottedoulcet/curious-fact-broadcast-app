@@ -18,3 +18,14 @@ export const showErrorState = () => {
   const btnSave = document.getElementById("btn-save");
   btnSave.disabled = true;
 };
+
+export const renderFavorites = (favoritesArray) => {
+  const listElement = document.getElementById("favorites-list");
+  listElement.innerHTML = "";
+  favoritesArray.forEach((factText) => {
+    const li = document.createElement("li");
+    li.textContent = factText;
+    listElement.appendChild(li);
+  });
+};
+window.renderFavorites = renderFavorites;

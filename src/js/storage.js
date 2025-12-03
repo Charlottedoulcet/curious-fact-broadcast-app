@@ -5,9 +5,11 @@ export const addToFavorites = (factText) => {
     console.log("Already in favorites:", factText);
     return false;
   }
+
   favorites.push(factText);
   console.log("Favorite added", factText);
   console.log("Current favorites:", favorites);
+
   return true;
 };
 
@@ -20,6 +22,7 @@ export const removeFavorite = (index) => {
     console.warn("removeFavorite : invalide index", index);
     return false;
   }
+
   favorites.splice(idx, 1);
   console.log("Favorite removed at index", idx, "Remaining favorites:", favorites);
   return true;

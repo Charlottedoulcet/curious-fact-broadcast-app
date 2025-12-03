@@ -43,11 +43,14 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const btnTune = document.getElementById("btn-tune");
 btnTune.addEventListener("click", async () => {
   try {
+    btnTune.disabled = true;
     showLoadingState();
     const randomFact = await fetchRandomFact();
-    await delay(500);
+    await delay(700);
     displayFact(randomFact.text);
+    btnTune.disabled = false;
   } catch (error) {
     console.error("Error wile loading ramdom fact", error);
+    btnTune.disabled = false;
   }
 });

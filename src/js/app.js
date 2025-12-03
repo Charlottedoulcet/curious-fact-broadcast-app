@@ -1,4 +1,4 @@
-import { displayFact } from "./ui.js";
+import { displayFact, showLoadingState } from "./ui.js";
 
 export const fetchRandomFact = async () => {
   try {
@@ -38,13 +38,16 @@ window.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const btnTune = document.getElementById("btn-tune");
 btnTune.addEventListener("click", async () => {
   try {
+    showLoadingState();
     const randomFact = await fetchRandomFact();
+    await delay(500);
     displayFact(randomFact.text);
   } catch (error) {
     console.error("Error wile loading ramdom fact", error);
   }
 });
-w;

@@ -23,7 +23,7 @@ export const fetchTodayFact = async () => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error while fetching ramdom fact:", error);
+    console.error("Error while fetching today fact:", error);
     throw error;
   }
 };
@@ -37,3 +37,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     console.error("Failed to load today's fact on init:", error);
   }
 });
+
+const btnTune = document.getElementById("btn-tune");
+btnTune.addEventListener("click", async () => {
+  try {
+    const randomFact = await fetchRandomFact();
+    displayFact(randomFact.text);
+  } catch (error) {
+    console.error("Error wile loading ramdom fact", error);
+  }
+});
+w;

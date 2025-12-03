@@ -1,3 +1,5 @@
+import { displayFact } from "./ui.js";
+
 export const fetchRandomFact = async () => {
   try {
     const response = await fetch("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en");
@@ -30,11 +32,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   console.log("App initialized: DOM fully loaded");
   try {
     const todayFact = await fetchTodayFact();
-    const factTextElement = document.getElementById("fact-text");
-    w;
-    const btnSave = document.getElementById("btn-save");
-    factTextElement.textContent = todayFact.text;
-    btnSave.disabled = false;
+    displayFact(todayFact.text);
   } catch (error) {
     console.error("Failed to load today's fact on init:", error);
   }

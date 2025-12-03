@@ -1,3 +1,5 @@
+import { getFavorites, removeFavorite } from "./storage.js";
+
 export const displayFact = (factText) => {
   const factTextElement = document.getElementById("fact-text");
   factTextElement.textContent = factText;
@@ -29,9 +31,16 @@ export const renderFavorites = (favoritesArray) => {
     listElement.appendChild(emptyItem);
     return;
   }
-  favoritesArray.forEach((factText) => {
+  favoritesArray.forEach((factText, index) => {
     const li = document.createElement("li");
-    li.textContent = factText;
+    const textSpan = document.createElement("span");
+    textSpan.textContent = factText;
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "✖";
+    deleteBtn.classList.add("delete-fav-btn");
+    deleteBtn.dataset.index = index;
+    li.appendChild(textSpan);
+    li.appendChild(deleteBtn);
     listElement.appendChild(li);
   });
 };
@@ -44,3 +53,19 @@ export const showFeedback = (message) => {
     feedbackElement.textContent = "";
   }, 2500);
 };
+
+const favoritesList = document.getElementById("favorites-list");
+
+favoritesList.addEventListener("click", (event) => {
+  if (!event.target.classList.contains("delete-fav-btn")) return;
+
+  const indexToDelete = event.target.dataset.index;
+  console.log("Delete clicked at index:", indexToDelete);
+
+  const removed = removeFavorite(indexToDelete);
+  if (!removed) return;
+
+  const updateFavorites = getFavorites();
+
+  renderFavorites(updateFavorites);
+});

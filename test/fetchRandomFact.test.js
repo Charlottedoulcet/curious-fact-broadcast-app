@@ -1,13 +1,4 @@
-import { describe, expect, test, vi } from "vitest";
-
-vi.mock("../src/js/ui.js", () => ({
-  displayFact: vi.fn(),
-  showLoadingState: vi.fn(),
-  showErrorState: vi.fn(),
-  renderFavorites: vi.fn(),
-  showFeedback: vi.fn(),
-}));
-
+import { describe, expect, test } from "vitest";
 import { fetchRandomFact } from "../src/js/app.js";
 
 describe("fetchRandomFact", () => {

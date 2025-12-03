@@ -30,7 +30,11 @@ window.addEventListener("DOMContentLoaded", async () => {
   console.log("App initialized: DOM fully loaded");
   try {
     const todayFact = await fetchTodayFact();
-    console.log("Today fact objet:", todayFact);
+    const factTextElement = document.getElementById("fact-text");
+    w;
+    const btnSave = document.getElementById("btn-save");
+    factTextElement.textContent = todayFact.text;
+    btnSave.disabled = false;
   } catch (error) {
     console.error("Failed to load today's fact on init:", error);
   }

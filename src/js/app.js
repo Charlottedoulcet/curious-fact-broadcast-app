@@ -1,4 +1,4 @@
-import { displayFact, showLoadingState, showErrorState, renderFavorites } from "./ui.js";
+import { displayFact, showLoadingState, showErrorState, renderFavorites, showFeedback } from "./ui.js";
 import { addToFavorites, getFavorites } from "./storage.js";
 let initFailed = false;
 
@@ -73,5 +73,8 @@ btnSave.addEventListener("click", () => {
   if (added) {
     const favorites = getFavorites();
     renderFavorites(favorites);
+    showFeedback("⭐ Saved to favorites!");
+  } else {
+    showFeedback("⚠️ Already in favorites!");
   }
 });

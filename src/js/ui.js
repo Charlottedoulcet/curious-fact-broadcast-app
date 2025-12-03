@@ -29,3 +29,11 @@ export const renderFavorites = (favoritesArray) => {
   });
 };
 window.renderFavorites = renderFavorites;
+
+export const showFeedback = (message) => {
+  const feedbackElement = document.getElementById("feedback-message");
+  feedbackElement.textContent = message;
+  setTimeout(() => {
+    feedbackElement.textContent = "";
+  }, 2500);
+};

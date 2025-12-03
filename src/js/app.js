@@ -1,4 +1,5 @@
-import { displayFact, showLoadingState } from "./ui.js";
+import { displayFact, showLoadingState, showErrorState } from "./ui.js";
+let initFailed = false;
 
 export const fetchRandomFact = async () => {
   try {
@@ -35,6 +36,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     displayFact(todayFact.text);
   } catch (error) {
     console.error("Failed to load today's fact on init:", error);
+    initFailed = true;
+    showErrorState();
   }
 });
 
@@ -45,12 +48,19 @@ btnTune.addEventListener("click", async () => {
   try {
     btnTune.disabled = true;
     showLoadingState();
-    const randomFact = await fetchRandomFact();
-    await delay(700);
-    displayFact(randomFact.text);
+    let fact;
+    if (initFailed) {
+      fact = await fetchTodayFact();
+      initFailed = false;
+    } else {
+      fact = await fetchRandomFact();
+    }
+    await delay(800);
+    displayFact(fact.text);
     btnTune.disabled = false;
   } catch (error) {
-    console.error("Error wile loading ramdom fact", error);
+    console.error("Error while loading random fact", error);
+    showErrorState();
     btnTune.disabled = false;
   }
 });

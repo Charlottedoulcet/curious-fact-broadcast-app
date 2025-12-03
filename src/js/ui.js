@@ -11,3 +11,10 @@ export const showLoadingState = () => {
   factTextElement.textContent = "Tuning signal ... please stand by.";
   btnSave.disabled = true;
 };
+
+export const showErrorState = () => {
+  const factTextElement = document.getElementById("fact-text");
+  factTextElement.textContent = "🚨 Oops! The fact generator fainted. Tap Tune Signal again to revive it.";
+  const btnSave = document.getElementById("btn-save");
+  btnSave.disabled = true;
+};

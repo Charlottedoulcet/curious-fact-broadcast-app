@@ -80,3 +80,10 @@ btnSave.addEventListener("click", () => {
     showFeedback("⚠️ Already in favorites!");
   }
 });
+
+const btnGoToFavorites = document.getElementById("btn-go-to-favorites");
+btnGoToFavorites.addEventListener("click", () => {
+  const favoritesPanel = document.getElementById("favorites-panel");
+  if (!favoritesPanel) return;
+  favoritesPanel.scrollIntoView({ behavior: "smooth" });
+});

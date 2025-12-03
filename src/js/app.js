@@ -40,6 +40,8 @@ window.addEventListener("DOMContentLoaded", async () => {
     initFailed = true;
     showErrorState();
   }
+  const favorites = getFavorites();
+  renderFavorites(favorites);
 });
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

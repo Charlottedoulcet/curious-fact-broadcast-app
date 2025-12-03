@@ -22,6 +22,13 @@ export const showErrorState = () => {
 export const renderFavorites = (favoritesArray) => {
   const listElement = document.getElementById("favorites-list");
   listElement.innerHTML = "";
+  if (!favoritesArray || favoritesArray.length === 0) {
+    const emptyItem = document.createElement("li");
+    emptyItem.textContent = " No favorites yet. Tune a fact and save it ✨";
+    emptyItem.classList.add("favorites-empty-state");
+    listElement.appendChild(emptyItem);
+    return;
+  }
   favoritesArray.forEach((factText) => {
     const li = document.createElement("li");
     li.textContent = factText;

@@ -171,7 +171,7 @@ body {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-  transition: all 0, 15s ease-out;
+  transition: all 0.15s ease-out;
   box-shadow: 0 0 8px rgba(57, 255, 20, 0.6), 0 0 16px rgba(57, 255, 20, 0.3);
 }
 
@@ -206,4 +206,24 @@ body {
   background: #0a7a2b;
   box-shadow: 0 0 8px rgba(57, 255, 20, 0.7), 0 0 14px rgba(57, 255, 20, 0.35);
   transform: translateY(-1px);
+}
+
+.feedback-message {
+  font-size: var(--font-label);
+  margin-top: 10px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.feedback-message.is-success {
+  color: var(--feedback-success);
+  text-shadow: 0 0 6px rgba(46, 213, 115, 0.6);
+}
+
+.feedback-message.is-error {
+  color: var(--feedback-error);
+  text-shadow: 0 0 6px rgba(255, 71, 87, 0.6);
 }

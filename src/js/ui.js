@@ -57,12 +57,22 @@ export const renderFavorites = (favoritesArray) => {
 
 window.renderFavorites = renderFavorites;
 
-export const showFeedback = (message) => {
-  const feedbackElement = document.getElementById("feedback-message");
-  feedbackElement.textContent = message;
+export const showFeedback = (message, type = "success") => {
+  const el = document.getElementById("feedback-message");
+
+  el.className = "";
+
+  el.classList.add("feedback-message");
+
+  if (type === "success") el.classList.add("is-success");
+  if (type === "error") el.classList.add("is-error");
+  if (type === "info") el.classList.add("is-info");
+
+  el.textContent = message;
 
   setTimeout(() => {
-    feedbackElement.textContent = "";
+    el.textContent = "";
+    el.className = "";
   }, 2500);
 };
 

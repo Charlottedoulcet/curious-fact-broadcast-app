@@ -60,9 +60,9 @@ export function initApp() {
       if (added) {
         const favorites = getFavorites();
         renderFavorites(favorites);
-        showFeedback("⭐ Saved to favorites!");
+        showFeedback("⭐ Saved to favorites!", "success");
       } else {
-        showFeedback("⚠️ Already in favorites!");
+        showFeedback("⚠️ Already in favorites!", "error");
       }
     });
   }

@@ -31,26 +31,26 @@ export const renderFavorites = (favoritesArray) => {
   if (!favoritesArray || favoritesArray.length === 0) {
     const emptyItem = document.createElement("li");
     emptyItem.textContent = " No favorites yet. Tune a fact and save it ✨";
-    emptyItem.classList.add("favorites-empty-state");
-
+    emptyItem.classList.add("favorites-empty");
     listElement.appendChild(emptyItem);
     return;
   }
 
   favoritesArray.forEach((factText, index) => {
     const li = document.createElement("li");
+    li.classList.add("favorite-card");
 
     const textSpan = document.createElement("span");
     textSpan.textContent = factText;
+    textSpan.classList.add("favorite-card-text");
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "✖";
-    deleteBtn.classList.add("delete-fav-btn");
+    deleteBtn.classList.add("favorite-card-delete");
     deleteBtn.dataset.index = index;
 
     li.appendChild(textSpan);
     li.appendChild(deleteBtn);
-
     listElement.appendChild(li);
   });
 };
@@ -66,7 +66,6 @@ export const showFeedback = (message, type = "success") => {
 
   if (type === "success") el.classList.add("is-success");
   if (type === "error") el.classList.add("is-error");
-  if (type === "info") el.classList.add("is-info");
 
   el.textContent = message;
 

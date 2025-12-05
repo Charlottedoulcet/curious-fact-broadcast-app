@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curious Facts Broadcast</title>
+    <link rel="stylesheet" href="./src/assets/css/reset.css" />
+    <link rel="stylesheet" href="./src/assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main id="app">
+      <header id="top-nav">
+        <button id="btn-go-to-favorites" type="button">Favorites</button>
+      </header>
+      <h1>Useless Facts Broadcast</h1>
+      <section id="transmitter" aria-label="Transmission Area">
+        <article id="crt-screen" aria-live="polite">
+          <div class="crt-frame">
+            <div class="crt-glass">
+              <div class="crt-scanlines"></div>
+              <p id="fact-text">Your fact will appear here</p>
+            </div>
+          </div>
+        </article>
+        <section id="main-controls">
+          <button id="btn-tune" type="button">Tune Signal</button>
+          <button id="btn-save" type="button" disabled>Save</button>
+        </section>
+        <p id="feedback-message" aria-live="polite"></p>
+      </section>
+      <section id="favorites-panel" aria-label="Favorites Section">
+        <h2>Favorites</h2>
+        <ul id="favorites-list"></ul>
+      </section>
+    </main>
+    <script type="module" src="./src/js/initApp.js"></script>
+  </body>
+</html>

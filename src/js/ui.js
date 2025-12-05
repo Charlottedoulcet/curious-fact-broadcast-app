@@ -78,7 +78,7 @@ export const showFeedback = (message, type = "success") => {
 const favoritesList = document.getElementById("favorites-list");
 
 favoritesList.addEventListener("click", (event) => {
-  if (!event.target.classList.contains("delete-fav-btn")) return;
+  if (!event.target.classList.contains("favorite-card-delete")) return;
 
   const indexToDelete = event.target.dataset.index;
   console.log("Delete clicked at index:", indexToDelete);
